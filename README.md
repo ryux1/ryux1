@@ -10,6 +10,26 @@ Most commercial work remains private due to enterprise involvement and internal 
 
 ---
 
+## Selected Open-Source Work
+
+### [MCP Trace](https://github.com/ryux1/mcp-trace)
+
+A security-conscious observability, recording, and replay gateway for MCP Streamable HTTP.
+
+* Transparent JSON and SSE proxying across modern and legacy MCP transports
+* Metadata-only recording by default, with opt-in body capture and structured redaction
+* Dry-run-first traffic replay with explicit execution, rate, concurrency, and timeout controls
+* Prometheus-compatible metrics and OpenTelemetry OTLP tracing
+* Tested on Node.js 20, 22, and 24 with 40 automated tests, more than 90% statement and line coverage, CodeQL, secret scanning, and container verification
+
+[Read the architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [View the signed v0.1.0 release](https://github.com/ryux1/mcp-trace/releases/tag/v0.1.0)
+
+### Upstream Work
+
+* [OpenAI Cookbook #2495](https://github.com/openai/openai-cookbook/pull/2495) — an open pull request that restores native Windows checkout and adds a regression-tested repository path-portability guard
+
+---
+
 ## Engineering Focus
 
 * Large-scale application architecture
