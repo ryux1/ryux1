@@ -1,152 +1,90 @@
-# Ryu — Software Engineer, Systems Architect
+<h1 align="center">Ryu</h1>
 
-My name is Ryu. I approach engineering through an epistemological lens — the study of how we know what we know. Every system is a chain of assumptions, constraints, and evidence. My work focuses on building architectures that are observable, testable, and resilient, where decisions are grounded in reasoning rather than trend or habit.
+<p align="center">
+  <strong>Software Engineer · Systems Architect</strong><br>
+  Systems · Networks · Scale · Reliability · Security · Observability
+</p>
 
-I design and build software as systems, not features.
+<p align="center">
+  <a href="https://github.com/ryux1/mcp-trace"><strong>MCP Trace</strong></a>
+  ·
+  <a href="#open-source"><strong>Open Source</strong></a>
+  ·
+  <a href="#engineering-surface"><strong>Engineering Surface</strong></a>
+</p>
 
-My work centers on architecture, reliability, performance, and security across the full lifecycle of applications — from low-level implementation to infrastructure and operational stability. I operate across frontend, backend, systems engineering, and security-aware development, with an emphasis on building software that endures under real-world pressure.
-
-Most commercial work remains private due to enterprise involvement and internal contracts. This space serves as a technical profile and a reflection of the engineering domains I work within.
+<p align="center"><code>architecture &gt; isolated features · evidence &gt; assumptions · reliability &gt; hype</code></p>
 
 ---
 
-## Selected Open-Source Work
+I design software as systems, not isolated features.
+
+My work centers on failure-aware architecture, runtime behavior, networking, observability, security, and performance. I prefer explicit invariants, reproducible tests, narrow interfaces, measurable behavior, and telemetry that remains useful when a system is under pressure.
+
+Most commercial work is private. The public work below is selected engineering evidence.
+
+## Selected Work
 
 ### [MCP Trace](https://github.com/ryux1/mcp-trace)
 
-A security-conscious observability, recording, and replay gateway for MCP Streamable HTTP.
+[![CI](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml)
+[![Release](https://img.shields.io/github/v/release/ryux1/mcp-trace?include_prereleases&label=release)](https://github.com/ryux1/mcp-trace/releases)
+[![License](https://img.shields.io/github/license/ryux1/mcp-trace)](https://github.com/ryux1/mcp-trace/blob/main/LICENSE)
 
-* Transparent JSON and SSE proxying across modern and legacy MCP transports
-* Metadata-only recording by default, with opt-in body capture and structured redaction
-* Dry-run-first traffic replay with explicit execution, rate, concurrency, and timeout controls
-* Prometheus-compatible metrics and OpenTelemetry OTLP tracing
-* Tested on Node.js 20, 22, and 24 with 40 automated tests, more than 90% statement and line coverage, CodeQL, secret scanning, and container verification
+A security-conscious observability gateway for the Model Context Protocol over Streamable HTTP.
 
-[Read the architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [View the signed v0.1.1 release](https://github.com/ryux1/mcp-trace/releases/tag/v0.1.1)
+```text
+MCP client  ──────▶  MCP Trace  ──────▶  upstream MCP server
+                         │
+                         ├── Prometheus metrics
+                         ├── OpenTelemetry traces
+                         └── sanitized NDJSON recording + controlled replay
+```
 
-### Upstream Work
+- Transparent JSON and SSE proxying without taking protocol authority away from the upstream server.
+- Prometheus-compatible metrics, OpenTelemetry spans, W3C Trace Context, structured logs, and MCP-aware inspection.
+- Metadata-only recording by default, explicit body capture, credential redaction, hashed legacy session identifiers, and owner-only recording permissions.
+- Replay is dry-run-first with explicit execution, concurrency, rate, and timeout controls.
+- Compatibility across modern 2026 Streamable HTTP and the 2025 MCP transport revisions.
 
-* [OpenAI Cookbook #2495](https://github.com/openai/openai-cookbook/pull/2495) — an open pull request that restores native Windows checkout and adds a regression-tested repository path-portability guard
+[Architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [Security model](https://github.com/ryux1/mcp-trace/blob/main/docs/security.md) · [Recording schema](https://github.com/ryux1/mcp-trace/blob/main/docs/recording-schema.md) · [Releases](https://github.com/ryux1/mcp-trace/releases)
 
----
+## Open Source
 
-## Engineering Focus
+Current upstream patches under maintainer review:
 
-* Large-scale application architecture
-* Security-aware system design
-* Backend services & distributed systems
-* Real-time data flow & event-driven systems
-* Performance-critical frontend engineering
-* Infrastructure & deployment pipelines
-* Automation and operational tooling
-* Long-term maintainability and system evolution
+| Project | Contribution | Engineering scope |
+| --- | --- | --- |
+| **NASA F´** · [`nasa/fprime`](https://github.com/nasa/fprime) | [#5670 — parameter validation macro](https://github.com/nasa/fprime/pull/5670) | C++ framework API; centralized parameter-validity semantics; refactor across 9 files; four-state coverage; 129/129 unit-test targets |
+| **Google gVisor** · [`google/gvisor`](https://github.com/google/gvisor) | [#14097 — PTY positional-write semantics](https://github.com/google/gvisor/pull/14097) | Linux VFS/devpts behavior; `ESPIPE` compatibility for positional PTY writes; syscall and filesystem regression coverage |
+| **Cloudflare Workers SDK** · [`cloudflare/workers-sdk`](https://github.com/cloudflare/workers-sdk) | [#15158 — Workflow batch deletion results](https://github.com/cloudflare/workers-sdk/pull/15158) | Runtime behavior; not-found/failure propagation; duplicate-safe result mapping; regression coverage across success and failure paths |
+| **OpenAI Cookbook** · [`openai/openai-cookbook`](https://github.com/openai/openai-cookbook) | [#2495 — Windows path portability](https://github.com/openai/openai-cookbook/pull/2495) | Cross-platform repository integrity; Windows-compatible checkout; tested path-portability guard across 3,070 tracked paths |
 
----
+I am deliberately focusing on contributions where the patch exposes real engineering judgment: compatibility semantics, failure behavior, tests, invariants, portability, and maintainability rather than drive-by cosmetic changes.
 
-## Engineering Philosophy
+## Engineering Surface
 
-* Architecture before implementation
-* Design for failure, not ideal conditions
-* Stability and clarity over trend adoption
-* Performance and security as first-class concerns
-* Systems built to scale, adapt, and persist
-* Decisions grounded in evidence, testing, and reasoning
+| Layer | Working set |
+| --- | --- |
+| **Systems & runtime** | C, C++, Rust, Go, Linux, VFS/filesystem semantics, process and network behavior |
+| **Services & infrastructure** | TypeScript, Node.js, REST, WebSockets, PostgreSQL, Redis, Docker, CI/CD |
+| **Observability** | OpenTelemetry, Prometheus, structured logging, tracing, recording, replay, operational diagnostics |
+| **Application engineering** | React, Next.js, realtime interfaces, performance-sensitive frontend systems |
+| **Security & delivery** | threat-aware design, input validation, access-control boundaries, CodeQL, secret scanning, GitHub Actions |
+| **Automation** | Python, Bash/Shell, PowerShell, repository tooling, validation and release workflows |
 
-I prioritize structure, correctness, and resilience.
-Technology choices are driven by practical value, longevity, and operational reliability.
+## Operating Principles
 
----
+- Architecture before implementation.
+- Design for failure, not ideal conditions.
+- Treat security, performance, and observability as initial constraints rather than cleanup work.
+- Prefer behavior that can be tested, measured, reproduced, and explained.
+- Keep interfaces narrow and operational failure modes explicit.
+- Optimize for systems that remain understandable after the original implementation context is gone.
 
-## Core Technologies
+## Current Direction
 
-### Application & Interface Engineering
+`runtime systems` · `distributed infrastructure` · `networking` · `observability tooling` · `performance` · `open-source engineering`
 
-* TypeScript
-* JavaScript
-* React
-* Next.js
-* TailwindCSS
-* SCSS
-* Framer Motion
-* GSAP
-
-### Backend & Service Architecture
-
-* Node.js
-* Express
-* REST API design
-* WebSockets / real-time communication
-* Event-driven patterns
-
-### Data & Persistence
-
-* PostgreSQL
-* MongoDB
-* Redis
-* Supabase
-* Relational and non-relational modeling
-
----
-
-## Systems, Infrastructure & DevOps
-
-* Docker
-* CI/CD pipelines
-* GitHub Actions
-* Vercel
-* Railway
-* Render
-* Environment orchestration
-* Deployment automation
-* Monitoring-aware system design
-
----
-
-## Cybersecurity & Hardening
-
-* Secure authentication & session design
-* Access control and identity flows
-* Attack surface reduction
-* Input validation & defensive coding
-* Security-aware architecture decisions
-* Threat-conscious development practices
-
-Security is treated as a design responsibility, not an afterthought.
-
----
-
-## Systems Programming & Languages
-
-* TypeScript / JavaScript
-* Python
-* Rust
-* C / C++
-* Lua
-* Bash / Shell scripting
-* PowerShell
-
-Experience spans high-level application layers down to system-level tooling and automation.
-
----
-
-## Extended Domains
-
-### Real-Time & Interactive Systems
-
-* Three.js
-* WebGL
-* Babylon.js
-
-### Automation & Integration
-
-* Discord API ecosystems
-* Process automation
-* Background task systems
-
----
-
-## Approach
-
-I work best in environments where systems must be stable, secure, and scalable over time.
-
-The focus is execution grounded in reasoning — building software that is observable, verifiable, and resilient. Systems should perform reliably, evolve cleanly, and withstand real production conditions.
+The objective is simple: build systems whose correctness is visible in their behavior, tests, architecture, and failure handling—not in the number of technologies listed beside them.
