@@ -1,72 +1,123 @@
-<h1 align="center">Ryu</h1>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/profile-light.svg">
+  <img src="./assets/profile-light.svg" alt="Ryu — systems engineer. Software should keep its promises." width="100%">
+</picture>
 
 <p align="center">
-  <strong>Systems engineer working across runtimes, distributed infrastructure, reliability, and security.</strong>
+  <a href="#selected-casework"><strong>SELECTED WORK</strong></a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests"><strong>ALL PULL REQUESTS</strong></a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://github.com/ryux1?tab=repositories"><strong>REPOSITORIES</strong></a>
 </p>
-
-<p align="center">
-  <code>runtime behavior</code>&nbsp;&nbsp;
-  <code>systems correctness</code>&nbsp;&nbsp;
-  <code>failure semantics</code>&nbsp;&nbsp;
-  <code>performance</code>
-</p>
-
----
-
-I work on the parts of software where behavior becomes difficult to reason about:
-compatibility boundaries, concurrency, resource accounting, authorization,
-failure recovery, and the gap between an interface's promise and its runtime
-behavior.
-
-My public work is mostly upstream engineering. I reproduce the condition, find
-the violated invariant, make the narrowest defensible change, and leave behind
-tests that explain why the behavior matters.
-
-## Selected upstream work
-
-| Project | Change | Engineering result |
-| --- | --- | --- |
-| **Apache DataFusion** | [Reduce record-batch memory accounting overhead](https://github.com/apache/datafusion/pull/24319) | Removed repeated Arrow accounting work while preserving view-array and shared-buffer correctness. **Merged.** |
-| **Supabase Realtime** | [Check extension write policies lazily](https://github.com/supabase/realtime/pull/2089) | Preserved explicit Broadcast and Presence authorization without performing unrelated extension reads. **Merged.** |
-| **NASA F´** | [Add a parameter validation macro](https://github.com/nasa/fprime/pull/5670) | Centralized four-state parameter-validity semantics across the C++ framework API and its tests. **Merged.** |
-| **Apache Hudi** | [Reject unsupported procedure filter functions](https://github.com/apache/hudi/pull/19850) | Converted invalid Spark procedure filters into explicit validation failures with focused coverage. **Merged.** |
-| **Google gVisor** | [Return `ESPIPE` for positional PTY I/O](https://github.com/google/gvisor/pull/14097) | Matched Linux VFS and devpts behavior with syscall and filesystem regression coverage. **Approved.** |
-| **pyasn1** | [Reject bare constructed schemas](https://github.com/pysnmp/pyasn1/pull/173) | Tightened constructed-type validation and added regression coverage across the affected schema paths. **Merged.** |
-
-Additional contributions span
-[aiohttp](https://github.com/aio-libs/aiohttp),
-[typeshed](https://github.com/python/typeshed),
-[Click](https://github.com/pallets/click),
-[Apache Sedona](https://github.com/apache/sedona),
-[Sentry CLI](https://github.com/getsentry/sentry-cli), and other established
-projects.
-
-[View all pull requests](https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests)
-
-## Engineering range
 
 <table>
   <tr>
-    <td width="33%" valign="top">
-      <strong>Systems</strong><br><br>
-      Linux semantics, runtimes, filesystems, memory, concurrency, compilers,
-      and native interfaces.
+    <td width="62%" valign="top">
+      <h2>Engineering past the happy path.</h2>
+      I work on systems where correctness depends on the behavior people usually
+      skip: compatibility boundaries, concurrency, resource accounting,
+      authorization, failure recovery, and the exact promise an interface makes.
+      <br><br>
+      My public work is primarily upstream engineering. I reproduce the condition,
+      locate the violated invariant, make the narrowest defensible change, and
+      leave behind evidence that explains why it is correct.
     </td>
-    <td width="33%" valign="top">
-      <strong>Distributed software</strong><br><br>
-      Networking, realtime systems, service boundaries, authorization,
-      observability, and recovery.
-    </td>
-    <td width="33%" valign="top">
-      <strong>Engineering assurance</strong><br><br>
-      Reproducible tests, explicit invariants, security boundaries, performance
-      evidence, and deterministic tooling.
+    <td width="38%" valign="top">
+      <h3>OPERATING RANGE</h3>
+      <code>runtime semantics</code><br><br>
+      <code>distributed systems</code><br><br>
+      <code>reliability + recovery</code><br><br>
+      <code>security boundaries</code><br><br>
+      <code>performance evidence</code>
     </td>
   </tr>
 </table>
 
-```text
-reproduce → isolate → understand the invariant → change narrowly → prove it
-```
+## Selected casework
 
-Rust · C++ · Go · Elixir · Python · Java · TypeScript
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <sub>01 / APACHE DATAFUSION · RUST + ARROW</sub><br><br>
+      <strong><a href="https://github.com/apache/datafusion/pull/24319">Account for memory once.</a></strong><br><br>
+      Removed repeated record-batch accounting while preserving correctness for
+      view arrays, shared buffers, and zero-copy slices.<br><br>
+      <code>MERGED</code>
+    </td>
+    <td width="50%" valign="top">
+      <sub>02 / SUPABASE REALTIME · ELIXIR</sub><br><br>
+      <strong><a href="https://github.com/supabase/realtime/pull/2089">Authorize only what will be written.</a></strong><br><br>
+      Preserved explicit Broadcast and Presence policy checks without performing
+      unrelated extension reads.<br><br>
+      <code>MERGED</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <sub>03 / NASA F´ · C++</sub><br><br>
+      <strong><a href="https://github.com/nasa/fprime/pull/5670">Make four states one invariant.</a></strong><br><br>
+      Centralized parameter-validity semantics across a flight-software framework
+      API and its regression coverage.<br><br>
+      <code>MERGED</code>
+    </td>
+    <td width="50%" valign="top">
+      <sub>04 / APACHE HUDI · JAVA + SPARK</sub><br><br>
+      <strong><a href="https://github.com/apache/hudi/pull/19850">Reject what cannot be represented.</a></strong><br><br>
+      Turned unsupported procedure filter functions into explicit validation
+      failures with focused tests.<br><br>
+      <code>MERGED</code>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  More merged work in
+  <a href="https://github.com/pysnmp/pyasn1/pull/173">pyasn1</a> ·
+  <a href="https://github.com/apache/sedona/pull/3326">Apache Sedona</a> ·
+  <a href="https://github.com/python/typeshed/pulls?q=is%3Apr+author%3Aryux1">typeshed</a> ·
+  <a href="https://github.com/aio-libs/aiohttp/pulls?q=is%3Apr+author%3Aryux1">aiohttp</a> ·
+  <a href="https://github.com/getsentry/sentry-cli/pulls?q=is%3Apr+author%3Aryux1">Sentry CLI</a>
+</p>
+
+## The work
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>RUNTIME</strong><br><br>
+      Linux behavior, filesystems, memory, native interfaces, and compatibility.
+    </td>
+    <td width="50%" valign="top">
+      <strong>DISTRIBUTED</strong><br><br>
+      Networks, services, authorization, coordination, and partial failure.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>ASSURANCE</strong><br><br>
+      Explicit policy, provenance, diagnostics, and deterministic verification.
+    </td>
+    <td width="50%" valign="top">
+      <strong>PERFORMANCE</strong><br><br>
+      Measurement, hot paths, resource models, and optimization without semantic drift.
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <code>Rust</code>&nbsp;&nbsp;
+  <code>C++</code>&nbsp;&nbsp;
+  <code>Go</code>&nbsp;&nbsp;
+  <code>Elixir</code>&nbsp;&nbsp;
+  <code>Python</code>&nbsp;&nbsp;
+  <code>Java</code>&nbsp;&nbsp;
+  <code>TypeScript</code>
+</p>
+
+---
+
+<p align="center">
+  <strong>Observe the behavior. Find the boundary. Change the minimum. Prove the result.</strong>
+</p>
