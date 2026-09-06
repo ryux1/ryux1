@@ -29,7 +29,7 @@ Most commercial work is private. The public work below is selected engineering e
 
 [![CI](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml)
-[![Release](https://img.shields.io/github/v/release/ryux1/mcp-trace?include_prereleases&label=release)](https://github.com/ryux1/mcp-trace/releases)
+[![Project site](https://img.shields.io/badge/project-site-0969da)](https://ryux1.github.io/mcp-trace/)
 [![License](https://img.shields.io/github/license/ryux1/mcp-trace)](https://github.com/ryux1/mcp-trace/blob/main/LICENSE)
 
 A security-conscious observability gateway for the Model Context Protocol over Streamable HTTP.
@@ -48,18 +48,20 @@ MCP client  ──────▶  MCP Trace  ──────▶  upstream MC
 - Replay is dry-run-first with explicit execution, concurrency, rate, and timeout controls.
 - Compatibility across modern 2026 Streamable HTTP and the 2025 MCP transport revisions.
 
-[Architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [Security model](https://github.com/ryux1/mcp-trace/blob/main/docs/security.md) · [Recording schema](https://github.com/ryux1/mcp-trace/blob/main/docs/recording-schema.md) · [Releases](https://github.com/ryux1/mcp-trace/releases)
+[Project site](https://ryux1.github.io/mcp-trace/) · [Deterministic demo](https://github.com/ryux1/mcp-trace#start-in-30-seconds) · [Architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [Security model](https://github.com/ryux1/mcp-trace/blob/main/docs/security.md) · [Recording schema](https://github.com/ryux1/mcp-trace/blob/main/docs/recording-schema.md)
 
 ## Open Source
 
-Current upstream patches under maintainer review:
+Selected upstream contributions and current review work:
 
-| Project | Contribution | Engineering scope |
-| --- | --- | --- |
-| **NASA F´** · [`nasa/fprime`](https://github.com/nasa/fprime) | [#5670 — parameter validation macro](https://github.com/nasa/fprime/pull/5670) | C++ framework API; centralized parameter-validity semantics; refactor across 9 files; four-state coverage; 129/129 unit-test targets |
-| **Google gVisor** · [`google/gvisor`](https://github.com/google/gvisor) | [#14097 — PTY positional-write semantics](https://github.com/google/gvisor/pull/14097) | Linux VFS/devpts behavior; `ESPIPE` compatibility for positional PTY writes; syscall and filesystem regression coverage |
-| **Cloudflare Workers SDK** · [`cloudflare/workers-sdk`](https://github.com/cloudflare/workers-sdk) | [#15158 — Workflow batch deletion results](https://github.com/cloudflare/workers-sdk/pull/15158) | Runtime behavior; not-found/failure propagation; duplicate-safe result mapping; regression coverage across success and failure paths |
-| **OpenAI Cookbook** · [`openai/openai-cookbook`](https://github.com/openai/openai-cookbook) | [#2495 — Windows path portability](https://github.com/openai/openai-cookbook/pull/2495) | Cross-platform repository integrity; Windows-compatible checkout; tested path-portability guard across 3,070 tracked paths |
+| Project | Contribution | Status | Engineering scope |
+| --- | --- | --- | --- |
+| **Supabase Realtime** · [`supabase/realtime`](https://github.com/supabase/realtime) | [#2089 — lazy extension write-policy checks](https://github.com/supabase/realtime/pull/2089) | Merged | Elixir authorization behavior; preserve explicit Broadcast and Presence writes while avoiding unrelated extension reads |
+| **Apache DataFusion** · [`apache/datafusion`](https://github.com/apache/datafusion) | [#24319 — record-batch memory accounting](https://github.com/apache/datafusion/pull/24319) | Merged | Rust/Arrow performance; reduce repeated memory accounting without losing view-array and shared-buffer correctness |
+| **NASA F´** · [`nasa/fprime`](https://github.com/nasa/fprime) | [#5670 — parameter validation macro](https://github.com/nasa/fprime/pull/5670) | Merged | C++ framework API; centralized parameter-validity semantics; refactor across 9 files; four-state coverage; 129/129 unit-test targets |
+| **Google gVisor** · [`google/gvisor`](https://github.com/google/gvisor) | [#14097 — PTY positional-I/O semantics](https://github.com/google/gvisor/pull/14097) | Approved | Linux VFS/devpts behavior; `ESPIPE` compatibility for positional PTY reads and writes; syscall and filesystem regression coverage |
+| **Cloudflare Workers SDK** · [`cloudflare/workers-sdk`](https://github.com/cloudflare/workers-sdk) | [#15158 — immediate Workflow batch deletion](https://github.com/cloudflare/workers-sdk/pull/15158) | Review requested | Focused regression coverage for `create()` followed immediately by `deleteBatch()` |
+| **OpenAI Cookbook** · [`openai/openai-cookbook`](https://github.com/openai/openai-cookbook) | [#2495 — Windows path portability](https://github.com/openai/openai-cookbook/pull/2495) | Review requested | Cross-platform repository integrity; Windows-compatible checkout; tested path-portability guard across 3,070 tracked paths |
 
 I am deliberately focusing on contributions where the patch exposes real engineering judgment: compatibility semantics, failure behavior, tests, invariants, portability, and maintainability rather than drive-by cosmetic changes.
 
