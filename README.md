@@ -1,92 +1,38 @@
 <h1 align="center">Ryu</h1>
 
 <p align="center">
-  <strong>Software Engineer · Systems Architect</strong><br>
-  Systems · Networks · Scale · Reliability · Security · Observability
+  Software engineer working on systems, infrastructure, networking, reliability, and security.
 </p>
 
 <p align="center">
-  <a href="https://github.com/ryux1/mcp-trace"><strong>MCP Trace</strong></a>
+  <a href="https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests">Pull requests</a>
   ·
-  <a href="#open-source"><strong>Open Source</strong></a>
+  <a href="https://github.com/ryux1?tab=repositories">Repositories</a>
   ·
-  <a href="#engineering-surface"><strong>Engineering Surface</strong></a>
+  <a href="https://github.com/ryux1?tab=achievements">Achievements</a>
 </p>
-
-<p align="center"><code>architecture &gt; isolated features · evidence &gt; assumptions · reliability &gt; hype</code></p>
 
 ---
 
-I design software as systems, not isolated features.
+I build and debug software systems.
 
-My work centers on failure-aware architecture, runtime behavior, networking, observability, security, and performance. I prefer explicit invariants, reproducible tests, narrow interfaces, measurable behavior, and telemetry that remains useful when a system is under pressure.
+I am most interested in the places where correctness gets difficult: failure paths, compatibility boundaries, concurrency, resource use, and behavior under load. I like changes that make those properties easier to test, observe, and reason about.
 
-Most commercial work is private. The public work below is selected engineering evidence.
+Most of my day-to-day work is private. My public activity is a mix of upstream fixes, tests, reviews, and experiments across Rust, Go, C++, Elixir, TypeScript, and Python.
 
-## Selected Work
+## Areas of interest
 
-### [MCP Trace](https://github.com/ryux1/mcp-trace)
+- Runtime and operating-system behavior
+- Distributed systems and networking
+- Performance and resource accounting
+- Reliability, observability, and security
+- Developer tooling and automation
 
-[![CI](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml/badge.svg)](https://github.com/ryux1/mcp-trace/actions/workflows/codeql.yml)
-[![Project site](https://img.shields.io/badge/project-site-0969da)](https://ryux1.github.io/mcp-trace/)
-[![License](https://img.shields.io/github/license/ryux1/mcp-trace)](https://github.com/ryux1/mcp-trace/blob/main/LICENSE)
+## How I work
 
-A security-conscious observability gateway for the Model Context Protocol over Streamable HTTP.
+- Reproduce the behavior before changing it.
+- Keep fixes narrow and cover the failure mode with a test.
+- Prefer explicit invariants over hidden assumptions.
+- Treat operational behavior as part of correctness.
 
-```text
-MCP client  ──────▶  MCP Trace  ──────▶  upstream MCP server
-                         │
-                         ├── Prometheus metrics
-                         ├── OpenTelemetry traces
-                         └── sanitized NDJSON recording + controlled replay
-```
-
-- Transparent JSON and SSE proxying without taking protocol authority away from the upstream server.
-- Prometheus-compatible metrics, OpenTelemetry spans, W3C Trace Context, structured logs, and MCP-aware inspection.
-- Metadata-only recording by default, explicit body capture, credential redaction, hashed legacy session identifiers, and owner-only recording permissions.
-- Replay is dry-run-first with explicit execution, concurrency, rate, and timeout controls.
-- Compatibility across modern 2026 Streamable HTTP and the 2025 MCP transport revisions.
-
-[Project site](https://ryux1.github.io/mcp-trace/) · [Deterministic demo](https://github.com/ryux1/mcp-trace#start-in-30-seconds) · [Architecture](https://github.com/ryux1/mcp-trace/blob/main/docs/architecture.md) · [Security model](https://github.com/ryux1/mcp-trace/blob/main/docs/security.md) · [Recording schema](https://github.com/ryux1/mcp-trace/blob/main/docs/recording-schema.md)
-
-## Open Source
-
-Selected upstream contributions and current review work:
-
-| Project | Contribution | Status | Engineering scope |
-| --- | --- | --- | --- |
-| **Supabase Realtime** · [`supabase/realtime`](https://github.com/supabase/realtime) | [#2089 — lazy extension write-policy checks](https://github.com/supabase/realtime/pull/2089) | Merged | Elixir authorization behavior; preserve explicit Broadcast and Presence writes while avoiding unrelated extension reads |
-| **Apache DataFusion** · [`apache/datafusion`](https://github.com/apache/datafusion) | [#24319 — record-batch memory accounting](https://github.com/apache/datafusion/pull/24319) | Merged | Rust/Arrow performance; reduce repeated memory accounting without losing view-array and shared-buffer correctness |
-| **NASA F´** · [`nasa/fprime`](https://github.com/nasa/fprime) | [#5670 — parameter validation macro](https://github.com/nasa/fprime/pull/5670) | Merged | C++ framework API; centralized parameter-validity semantics; refactor across 9 files; four-state coverage; 129/129 unit-test targets |
-| **Google gVisor** · [`google/gvisor`](https://github.com/google/gvisor) | [#14097 — PTY positional-I/O semantics](https://github.com/google/gvisor/pull/14097) | Approved | Linux VFS/devpts behavior; `ESPIPE` compatibility for positional PTY reads and writes; syscall and filesystem regression coverage |
-| **Cloudflare Workers SDK** · [`cloudflare/workers-sdk`](https://github.com/cloudflare/workers-sdk) | [#15158 — immediate Workflow batch deletion](https://github.com/cloudflare/workers-sdk/pull/15158) | Review requested | Focused regression coverage for `create()` followed immediately by `deleteBatch()` |
-| **OpenAI Cookbook** · [`openai/openai-cookbook`](https://github.com/openai/openai-cookbook) | [#2495 — Windows path portability](https://github.com/openai/openai-cookbook/pull/2495) | Review requested | Cross-platform repository integrity; Windows-compatible checkout; tested path-portability guard across 3,070 tracked paths |
-
-I am deliberately focusing on contributions where the patch exposes real engineering judgment: compatibility semantics, failure behavior, tests, invariants, portability, and maintainability rather than drive-by cosmetic changes.
-
-## Engineering Surface
-
-| Layer | Working set |
-| --- | --- |
-| **Systems & runtime** | C, C++, Rust, Go, Linux, VFS/filesystem semantics, process and network behavior |
-| **Services & infrastructure** | TypeScript, Node.js, REST, WebSockets, PostgreSQL, Redis, Docker, CI/CD |
-| **Observability** | OpenTelemetry, Prometheus, structured logging, tracing, recording, replay, operational diagnostics |
-| **Application engineering** | React, Next.js, realtime interfaces, performance-sensitive frontend systems |
-| **Security & delivery** | threat-aware design, input validation, access-control boundaries, CodeQL, secret scanning, GitHub Actions |
-| **Automation** | Python, Bash/Shell, PowerShell, repository tooling, validation and release workflows |
-
-## Operating Principles
-
-- Architecture before implementation.
-- Design for failure, not ideal conditions.
-- Treat security, performance, and observability as initial constraints rather than cleanup work.
-- Prefer behavior that can be tested, measured, reproduced, and explained.
-- Keep interfaces narrow and operational failure modes explicit.
-- Optimize for systems that remain understandable after the original implementation context is gone.
-
-## Current Direction
-
-`runtime systems` · `distributed infrastructure` · `networking` · `observability tooling` · `performance` · `open-source engineering`
-
-The objective is simple: build systems whose correctness is visible in their behavior, tests, architecture, and failure handling—not in the number of technologies listed beside them.
+You can find the current work in my [pull requests](https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests) and [repositories](https://github.com/ryux1?tab=repositories).
