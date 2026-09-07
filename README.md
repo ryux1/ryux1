@@ -1,6 +1,6 @@
 <div align="center">
 
-# Ryu
+# Hi, I'm Ryu
 
 **Systems engineer focused on runtime correctness, infrastructure, networking, reliability, and security.**
 
