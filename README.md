@@ -2,7 +2,7 @@
 
 # Hi, I'm Ryu
 
-**Systems engineer focused on runtime correctness, infrastructure, networking, reliability, and security.**
+**Systems engineer working on runtimes, distributed systems, networking, reliability, and security.**
 
 ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white)
@@ -16,20 +16,20 @@
 
 ## About me
 
-I like working on software that has to remain predictable once it leaves the happy path. My interests sit around systems and infrastructure: runtime behavior, distributed coordination, networking, resource use, compatibility, reliability, and security boundaries.
+I'm interested in what software actually does when timing, load, failures, and compatibility constraints start to matter. That often leads me into runtime behavior, distributed coordination, memory and resource use, and the boundaries between components.
 
-A lot of that work begins in an unfamiliar codebase. I reproduce the problem, trace it through the relevant layers, and try to leave behind a focused change with regression coverage. Depending on the project, that has taken me through Rust, C++, Go, Python, TypeScript, Java, and Elixir.
+When I contribute to a project, I usually start with a concrete problem, reproduce it, and follow it through the code until the behavior makes sense. I try to keep the resulting change focused, cover it with tests, and explain the trade-offs clearly.
 
-This profile collects my own projects and the upstream work I do in open source. The examples below cover performance, state management, authorization, and API consistency; the complete history is available through my pull requests.
+My public work spans Rust, C++, Go, Python, TypeScript, Java, and Elixir. A few representative contributions are below; the complete history is available through my pull requests.
 
-## Selected contributions
+## A few contributions
 
 | Project | Contribution |
 | --- | --- |
-| [Apache DataFusion](https://github.com/apache/datafusion/pull/24319) | Reworked Arrow memory accounting, with measured 3.4–9.4× speedups while preserving shared-buffer correctness. |
-| [Apache Hudi](https://github.com/apache/hudi/pull/19849) | Removed unused serialized Spark table state and deferred avoidable file-index initialization. |
-| [Supabase Realtime](https://github.com/supabase/realtime/pull/2089) | Scoped authorization checks to the Realtime extension actually being written. |
-| [NASA F´](https://github.com/nasa/fprime/pull/5670) | Centralized four-state parameter-validity semantics across the framework and services. |
+| [Apache DataFusion](https://github.com/apache/datafusion/pull/24319) | Made record-batch memory accounting 3.4–9.4× faster in benchmarks without breaking shared-buffer deduplication. |
+| [Apache Hudi](https://github.com/apache/hudi/pull/19849) | Removed unused state from Spark MOR tasks and avoided eager file-index initialization. |
+| [Supabase Realtime](https://github.com/supabase/realtime/pull/2089) | Made Realtime authorize only the extension being written instead of probing unrelated policy. |
+| [NASA F´](https://github.com/nasa/fprime/pull/5670) | Replaced repeated parameter-validity checks with one tested framework-wide API. |
 
 <p align="center">
   <a href="https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests"><strong>View all pull requests →</strong></a>
