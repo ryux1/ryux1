@@ -14,9 +14,13 @@
 
 </div>
 
-## About
+## About me
 
-I work close to runtime behavior: failure paths, compatibility boundaries, resource use, and distributed coordination. My contributions are usually narrow, testable changes with a clear effect on correctness or performance.
+I like working on software that has to remain predictable once it leaves the happy path. My interests sit around systems and infrastructure: runtime behavior, distributed coordination, networking, resource use, compatibility, reliability, and security boundaries.
+
+A lot of that work begins in an unfamiliar codebase. I reproduce the problem, trace it through the relevant layers, and try to leave behind a focused change with regression coverage. Depending on the project, that has taken me through Rust, C++, Go, Python, TypeScript, Java, and Elixir.
+
+This profile collects my own projects and the upstream work I do in open source. The examples below cover performance, state management, authorization, and API consistency; the complete history is available through my pull requests.
 
 ## Selected contributions
 
