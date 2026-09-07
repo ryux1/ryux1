@@ -30,7 +30,3 @@ My public work spans Rust, C++, Go, Python, TypeScript, Java, and Elixir. A few 
 | [Apache Hudi](https://github.com/apache/hudi/pull/19849) | Removed unused state from Spark MOR tasks and avoided eager file-index initialization. |
 | [Supabase Realtime](https://github.com/supabase/realtime/pull/2089) | Made Realtime authorize only the extension being written instead of probing unrelated policy. |
 | [NASA F´](https://github.com/nasa/fprime/pull/5670) | Replaced repeated parameter-validity checks with one tested framework-wide API. |
-
-<p align="center">
-  <a href="https://github.com/search?q=is%3Apr+author%3Aryux1&type=pullrequests"><strong>View all pull requests →</strong></a>
-</p>
