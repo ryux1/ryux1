@@ -39,9 +39,10 @@
 
 ### [MCP Trace](https://github.com/ryux1/mcp-trace)
 
-A security-first observability gateway for Model Context Protocol traffic. It traces, measures,
-records, inspects, and safely replays Streamable HTTP without taking over authentication or server
-routing. The public preview includes a runnable container, offline HTML reports, Prometheus metrics,
+A security-first observability proxy for Model Context Protocol traffic over local stdio and
+Streamable HTTP. It can sit between an MCP client and a subprocess without a shell, preserve protocol
+bytes, keep server diagnostics off stdout, and record redacted request/response metadata for later
+inspection. The project also includes safe HTTP replay, offline HTML reports, Prometheus metrics,
 OpenTelemetry export, a deterministic demo, and explicit compatibility and security boundaries.
 
 [SOURCE](https://github.com/ryux1/mcp-trace) ·
